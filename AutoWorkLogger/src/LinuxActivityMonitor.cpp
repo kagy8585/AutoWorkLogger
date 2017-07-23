@@ -49,6 +49,9 @@ void LinuxActivityMonitor::start()
 {
 	if (!isRunning)
 	{
+		//testing that the file descriptor is valid
+		if (fd<0)
+			throw std::logic_error("Can not start activity monitor twice!");
 		isRunning=true;
 		if (pthread_create(&thread, NULL, backgroundMethod, this)!=0)
 		{
@@ -69,9 +72,19 @@ void LinuxActivityMonitor::stop()
 		//closing the input file, in order to stop the read
 		if (fd>0)
 			close(fd);
+		fd=-1;
 		//joining the thread and waiting its return value
 		pthread_join(thread, NULL);
 		thread=0;
 	}
+}
+
+/**
+ * Destructor.
+ */
+LinuxActivityMonitor::~LinuxActivityMonitor()
+{
+	if (isRunning)
+		stop();
 }
 

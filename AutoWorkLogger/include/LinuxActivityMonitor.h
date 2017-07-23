@@ -42,12 +42,12 @@ public:
 	LinuxActivityMonitor (std::string & inputDevice);
 
 	/**
-	 * Starts the activity logger.
+	 * Starts the activity monitor.
 	 */
 	virtual void start();
 
 	/**
-	 * Stops the activity logger.
+	 * Stops the activity monitor.
 	 */
 	virtual void stop();
 
@@ -63,15 +63,15 @@ public:
 	 * Get the value of lastActiveTime
 	 * @return the value of lastActiveTime
 	 */
-	time_t getLastActivity ()
+	virtual inline time_t getLastActivity () const
 	{
 		return lastActiveTime;
 	}
 
 	/**
-	 * Empty Destructor
+	 * Destructor.
 	 */
-	virtual ~LinuxActivityMonitor() { }
+	virtual ~LinuxActivityMonitor();
 
 };
 

@@ -15,7 +15,7 @@ public:
 	 * Gets the last activity of the user on a given device.
 	 * @return time_t is the time of the last known activity.
 	 */
-	virtual time_t getLastActivity()=0;
+	virtual time_t getLastActivity() const=0;
 
 
 	/**
