@@ -124,6 +124,17 @@ public class WorkDay implements Comparable<WorkDay>{
 	    return date;
 	}
 
+	/**
+	 * Gets the work intervals of the work day.
+	 * @return the work intervals of the work day soreted in an array.
+	 */
+	public DateRange[] getWorkIntervals() {
+		DateRange[] workIntervalsArray=new DateRange[workIntervals.size()];
+
+		workIntervals.toArray(workIntervalsArray);
+		return workIntervalsArray;
+	}
+
 
 	/**
 	 * Compares the current day to an other one.

@@ -14,6 +14,8 @@ import static org.junit.jupiter.api.Assertions.*;
  * Created by kagy on 26.07.2017.
  */
 class WorkDayTest {
+
+
     private LocalDate date1, date2, date3;
     private DateRange[] intervals1, intervals2, intervals3;
     private WorkDay day1, day2, day3;
@@ -176,6 +178,15 @@ class WorkDayTest {
     void getDay() {
         assertTrue(date1.equals(day1.getDay()));
         assertTrue(date3.equals(day3.getDay()));
+    }
+
+    @Test
+    void getWorkIntervals() {
+        DateRange[] intervals=day1.getWorkIntervals();
+
+        for (int i=0; i+1<intervals.length; i++) {
+            assertTrue(intervals[i].compareTo(intervals[i+1])<0);
+        }
     }
 
     @Test
