@@ -52,6 +52,8 @@ public class JWorkDayPanel extends JPanel {
 		add(maxInfoLabel);
 		maxLabel=new JLabel();
 		add(maxInfoLabel);
+		//update the UI
+		updatePanelUI();
 	}
 
 	/**
