@@ -14,7 +14,6 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 class DateRangeTest {
 
-
     //3 basic data ranges
     private DateRange range1, range2, range3;
 
@@ -124,6 +123,13 @@ class DateRangeTest {
         assertTrue(range1.hashCode()==range2.hashCode());
         assertFalse(range1.hashCode()==range3.hashCode());
         assertFalse(range2.hashCode()==range3.hashCode());
+    }
+
+    @Test
+    void testToString() {
+        assertNotNull(range1.toString());
+        assertNotNull(range2.toString());
+        assertNotNull(range3.toString());
     }
 
 }

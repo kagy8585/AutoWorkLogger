@@ -145,4 +145,13 @@ public class DateRange implements Comparable<DateRange>{
 	public int hashCode() {
 	    return startDate.hashCode()+endDate.hashCode();
 	}
+
+	/**
+	 * Creates the string representation of the date range.
+	 * @return is the date range in form of a string.
+	 */
+	@Override
+	public String toString() {
+		return "[ " + startDate + ", " + endDate + "]";
+	}
 }
