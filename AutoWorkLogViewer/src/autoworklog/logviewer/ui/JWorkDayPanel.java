@@ -1,5 +1,6 @@
 package autoworklog.logviewer.ui;
 
+import autoworklog.logviewer.DurationFormatter;
 import autoworklog.logviewer.WorkDay;
 
 import javax.swing.*;
@@ -51,7 +52,7 @@ public class JWorkDayPanel extends JPanel {
 		maxInfoLabel=new JLabel("Max work period: ");
 		add(maxInfoLabel);
 		maxLabel=new JLabel();
-		add(maxInfoLabel);
+		add(maxLabel);
 		//update the UI
 		updatePanelUI();
 	}
@@ -61,8 +62,8 @@ public class JWorkDayPanel extends JPanel {
 	 */
 	private void updatePanelUI() {
 		if (day!=null) {
-			dayLabel.setText(day.toString());
-			durationLabel.setText(day.getWorkDuration().toString());
+			dayLabel.setText(day.getDay().toString());
+			durationLabel.setText(DurationFormatter.formatHMS(day.getWorkDuration()));
 			minLabel.setText(day.getMinWorkInterval().toString());
 			maxLabel.setText(day.getMaxWorkInterval().toString());
 		}

@@ -61,7 +61,7 @@ public class JWorkLogPanel extends JPanel{
         dayScrollPane =new JScrollPane(dayList);
         dayScrollPane.setBorder(new EmptyBorder(PADDING, PADDING, PADDING, PADDING));
         dayScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-        dayScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+        dayScrollPane.setVerticalScrollBarPolicy( JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         this.add(dayScrollPane, BorderLayout.CENTER);
 
         //adding the day info panel in the bottom
@@ -77,6 +77,8 @@ public class JWorkLogPanel extends JPanel{
         //getting the work days
         workDays=(workLog==null ? new WorkDay[0]: workLog.getDays());
 
+        //setting up the info panel
+        infoPanel.setWorkLog(workLog);
         //clearing the day information
         dayPanel.setDay(null);
 

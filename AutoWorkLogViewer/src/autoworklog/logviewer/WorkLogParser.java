@@ -12,6 +12,8 @@ import java.time.format.DateTimeFormatter;
  */
 public class WorkLogParser implements IWorkLogFactory {
 
+	public  static final String DEFAULT_EXTENSION="log";
+
 	/**
 	 * The keyword in each line, that is important to us.
 	 */

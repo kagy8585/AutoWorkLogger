@@ -1,5 +1,6 @@
 package autoworklog.logviewer.ui;
 
+import autoworklog.logviewer.DurationFormatter;
 import autoworklog.logviewer.WorkLog;
 
 import javax.swing.*;
@@ -60,8 +61,8 @@ public class JWorkLogInfoPanel extends JPanel {
 	 */
 	private void updateUIPanel() {
 		if (workLog!=null) {
-			totalWorkLabel.setText(workLog.getTotalWorkDuration().toString());
-			averageWorkLabel.setText(workLog.getAverageWorkDuration().toString());
+			totalWorkLabel.setText(DurationFormatter.formatHMS(workLog.getTotalWorkDuration()));
+			averageWorkLabel.setText(DurationFormatter.formatHMS(workLog.getAverageWorkDuration()));
 			minWorkLabel.setText(workLog.getMinWorkInterval().toString());
 			maxWorkLabel.setText(workLog.getMaxWorkInterval().toString());
 		}
