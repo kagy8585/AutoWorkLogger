@@ -8,6 +8,7 @@
 #ifndef INCLUDE_SYSTEM_H_
 #define INCLUDE_SYSTEM_H_
 
+#include <string>
 #include <fstream>
 #include <stdlib.h>
 
@@ -30,8 +31,9 @@ public:
 
 	/**
 	 * Initializes the program for the system.
+	 * @param workDir is the path of the working directory.
 	 */
-	virtual void init()=0;
+	virtual void init(const std::string workDir)=0;
 
 	/**
 	 * The mandatory virtual destructor.

@@ -18,8 +18,9 @@ public:
 
 	/**
 	 * The init function that should transform the current process into a daemon.
+	 * @param workDir is the path of the working directory.
 	 */
-	virtual void init();
+	virtual void init(const std::string workDir);
 
 	/**
 	 * Mandatory virtual destructor.

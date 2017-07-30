@@ -7,12 +7,59 @@
 
 #include "LinuxSystem.h"
 
+#include <unistd.h>
+#include <signal.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+
+
 /**
  * The init function that should transform the current process into a daemon.
  */
-void LinuxSystem::init()
+void LinuxSystem::init(const std::string workDir)
 {
+	//Process Identifier
+	pid_t pid;
+
 	System::pSystem=this;
+
+	//first fork in order to create an orphan process
+	pid=fork();
+
+	//exiting on fork error
+	if (pid<0)
+		exit(-1);
+
+	//exiting from the parent process, making the child orphan
+	if (pid>0)
+		exit(0);
+
+	//making a new session, where the orphan child is the session leader
+	pid=setsid();
+	if (pid<0) //can not create a new session
+		exit(-2);
+
+	//setting up signal handlers
+	signal(SIGCHLD, SIG_IGN);
+	signal(SIGHUP, SIG_IGN);
+
+	//forking to create the orphan grand child
+	pid=fork();
+	if (pid<0) //in case of an error
+		exit(-1);
+
+	//exiting the parent process of the grand child process
+	if (pid>0)
+		exit(0);
+
+	//setting new file permissions
+	umask(S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
+	//changing the current directory to the working directory
+	chdir(workDir.c_str());
+
+	//closing all open file descriptors
+	for (int f=sysconf(_SC_OPEN_MAX); f>=0; f--)
+		close(f);
 }
 
 
