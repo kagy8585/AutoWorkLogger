@@ -8,6 +8,8 @@ CPP_SRCS += \
 ../src/GroupActivityMonitor.cpp \
 ../src/LinuxActivityMonitor.cpp \
 ../src/LinuxActivityMonitorFactory.cpp \
+../src/LinuxSystem.cpp \
+../src/System.cpp \
 ../src/main.cpp 
 
 OBJS += \
@@ -15,6 +17,8 @@ OBJS += \
 ./src/GroupActivityMonitor.o \
 ./src/LinuxActivityMonitor.o \
 ./src/LinuxActivityMonitorFactory.o \
+./src/LinuxSystem.o \
+./src/System.o \
 ./src/main.o 
 
 CPP_DEPS += \
@@ -22,6 +26,8 @@ CPP_DEPS += \
 ./src/GroupActivityMonitor.d \
 ./src/LinuxActivityMonitor.d \
 ./src/LinuxActivityMonitorFactory.d \
+./src/LinuxSystem.d \
+./src/System.d \
 ./src/main.d 
 
 

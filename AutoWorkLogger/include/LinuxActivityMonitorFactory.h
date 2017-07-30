@@ -5,6 +5,7 @@
 #include "ActivityMonitorFactory.h"
 #include "LinuxActivityMonitor.h"
 #include "GroupActivityMonitor.h"
+#include "System.h"
 
 
 #include <string>

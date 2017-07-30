@@ -12,11 +12,9 @@ const std::string ActivityLogger::ACTIVE_KEYWORD="active";
  * @param  monitorFactory The factory used to create the activity monitor for the
  * logger.
  */
-ActivityLogger::ActivityLogger(const std::string & logFilePath, const ActivityMonitorFactory & monitorFactory)
+ActivityLogger::ActivityLogger(std::ostream & logStream, const ActivityMonitorFactory & monitorFactory)
 {
-	log.open(logFilePath.c_str(), std::ios_base::app | std::ios_base::out);
-	if (!log.is_open())
-		throw std::invalid_argument("Can not open log file \""+logFilePath+"\"!");
+	pLog=&logStream;
 	pMonitor=monitorFactory.createActivityMonitor();
 	if (pMonitor==NULL)
 		throw std::logic_error("The activity monitor can not be created!");
@@ -44,8 +42,7 @@ void ActivityLogger::startLogging()
 			{
 				//printing the last activity time to the log file.
 				//ctime puts \n symbol, no need to put it explicitly
-				log << ACTIVE_KEYWORD << " " << ctime(&lastActiveTime);
-				log.flush();
+				(*pLog) << ACTIVE_KEYWORD << " " << ctime(&lastActiveTime) << std::flush;
 			}
 			//wait for the las period
 			sleep(PERIOD_S);
@@ -69,8 +66,6 @@ void ActivityLogger::stopLogging()
  */
 ActivityLogger::~ActivityLogger()
 {
-	if (log.is_open())
-		log.close();
 	if (pMonitor!=NULL)
 	{
 		delete pMonitor;

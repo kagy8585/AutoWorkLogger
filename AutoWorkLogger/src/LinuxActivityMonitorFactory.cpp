@@ -34,7 +34,7 @@ std::vector<std::string> LinuxActivityMonitorFactory::collectInputDevices()
 			devicePath=INPUT_DEVICE_PATH+"/"+deviceName;
 			r=lstat(devicePath.c_str(), &st);
 			if (r<0)
-				std::cerr<<"Can not open input device \""<<devicePath<<"\"!\n";
+				((System::pSystem)->log)<<"Can not open input device \""<<devicePath<<"\"!\n";
 			else
 			{
 				//testing that it is not a directory

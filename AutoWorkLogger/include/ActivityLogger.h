@@ -3,7 +3,6 @@
 #define ACTIVITYLOGGER_H
 
 #include <string>
-#include <iostream>
 #include <fstream>
 
 #include <unistd.h>
@@ -33,18 +32,17 @@ private:
 	//The main activity logger of the class
 	ActivityMonitor * pMonitor;
 	//the output log file
-	std::ofstream log;
+	std::ostream * pLog;
 	volatile bool canRun;
 public:
 
 	/**
 	 * Creates a new activity logger.
-	 * @param  logFilePath The file path to the activity log. If the activity log does
-	 * not exist, it is created.
+	 * @param  logStream The stream used for logging.
 	 * @param  monitorFactory The factory used to create the activity monitor for the
 	 * logger.
 	 */
-	ActivityLogger(const std::string & logFilePath, const ActivityMonitorFactory & monitorFactory);
+	ActivityLogger(std::ostream & logStream, const ActivityMonitorFactory & monitorFactory);
 
 
 	/**
