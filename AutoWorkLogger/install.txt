@@ -1,0 +1,12 @@
+AutoWorkLogger install manual:
+
+1. Copy "AutoWorkLogger" to "/root/AutoWorkLoggerd" with command
+cp AutoWorkLogger /root/AutoWorkLoggerd
+
+2. On Ubuntu 16.04 and later enable rc.local, with the follwoing command:
+sudo systemctl enable rc-local.service
+
+3. Opne "/etc/rc.local" with your favorite text editor. Enter the follwoing line before exit: 
+/root/AutoWorkLoggerd /var/log/
+
+4. Sva and exit. Restart your computer. If installation was successful, "/var/log/autoworklog.log" should appear. This file contains the activity log.
