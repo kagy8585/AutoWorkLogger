@@ -5,8 +5,8 @@
 #include <string>
 #include <fstream>
 
-#include <unistd.h>
 
+#include "System.h"
 #include "ActivityMonitor.h"
 #include "ActivityMonitorFactory.h"
 

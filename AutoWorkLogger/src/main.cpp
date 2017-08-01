@@ -31,7 +31,10 @@ int main(int argc, char ** argv)
 	}
 	else
 	{
+		//Selecting the operation system dependent system object
+		#if defined(__linux__)
 		LinuxSystem sys;
+		#endif
 
 		//initializing the system
 		sys.init(std::string(argv[1]));

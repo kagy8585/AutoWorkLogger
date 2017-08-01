@@ -7,10 +7,8 @@
 
 #include "LinuxSystem.h"
 
-#include <unistd.h>
-#include <signal.h>
-#include <sys/types.h>
-#include <sys/stat.h>
+#if defined(__linux__)
+
 
 
 /**
@@ -20,6 +18,7 @@ void LinuxSystem::init(const std::string workDir)
 {
 	//Process Identifier
 	pid_t pid;
+	int r;
 
 	System::pSystem=this;
 
@@ -55,11 +54,13 @@ void LinuxSystem::init(const std::string workDir)
 	//setting new file permissions
 	umask(S_IRUSR | S_IWUSR | S_IRGRP | S_IROTH);
 	//changing the current directory to the working directory
-	chdir(workDir.c_str());
+	r=chdir(workDir.c_str());
+	if (r<0)
+		exit(-1);
 
 	//closing all open file descriptors
 	for (int f=sysconf(_SC_OPEN_MAX); f>=0; f--)
 		close(f);
 }
 
-
+#endif //defined(__linux__)

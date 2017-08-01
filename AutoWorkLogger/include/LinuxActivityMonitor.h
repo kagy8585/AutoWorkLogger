@@ -2,6 +2,8 @@
 #ifndef LINUXACTIVITYMONITOR_H
 #define LINUXACTIVITYMONITOR_H
 
+#if defined(__linux__)
+
 #include "ActivityMonitor.h"
 
 #include <string>
@@ -74,5 +76,7 @@ public:
 	virtual ~LinuxActivityMonitor();
 
 };
+
+#endif //defined(__linux__)
 
 #endif // LINUXACTIVITYMONITOR_H

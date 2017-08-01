@@ -1,5 +1,7 @@
 #include "LinuxActivityMonitorFactory.h"
 
+#if defined(__linux__)
+
 /**
  * Path to the Linux input devices.
  */
@@ -73,3 +75,5 @@ ActivityMonitor * LinuxActivityMonitorFactory::createActivityMonitor() const
 
 	return pGroupMonitor;
 }
+
+#endif //defined(__linux__)

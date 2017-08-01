@@ -3,6 +3,7 @@
 #define ACTIVITYMONITORFACTORY_H
 
 #include <string>
+
 #include "ActivityMonitor.h"
 
 /**

@@ -36,6 +36,12 @@ public:
 	virtual void init(const std::string workDir)=0;
 
 	/**
+	 * Sleeps the current thread for a give number of seconds.
+	 * @param seconds is the sleep period in seconds.
+	 */
+	virtual void sleepSeconds(const unsigned int seconds)=0;
+
+	/**
 	 * The mandatory virtual destructor.
 	 */
 	virtual ~System(){}

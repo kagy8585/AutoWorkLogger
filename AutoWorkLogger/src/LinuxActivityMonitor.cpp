@@ -1,5 +1,7 @@
 #include "LinuxActivityMonitor.h"
 
+#if defined(__linux__)
+
 /**
  * Creates a Linux activity monitor based on input devices.
  * @param  inputDevice The linux input device used to monitor the activity.
@@ -87,4 +89,6 @@ LinuxActivityMonitor::~LinuxActivityMonitor()
 	if (isRunning)
 		stop();
 }
+
+#endif //defined(__linux__)
 

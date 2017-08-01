@@ -2,6 +2,8 @@
 #ifndef LINUXACTIVITYMONITORFACTORY_H
 #define LINUXACTIVITYMONITORFACTORY_H
 
+#if defined(__linux__)
+
 #include "ActivityMonitorFactory.h"
 #include "LinuxActivityMonitor.h"
 #include "GroupActivityMonitor.h"
@@ -57,5 +59,7 @@ public:
 	 */
 	virtual ~LinuxActivityMonitorFactory () {}
 };
+
+#endif //defined(__linux__)
 
 #endif // LINUXACTIVITYMONITORFACTORY_H

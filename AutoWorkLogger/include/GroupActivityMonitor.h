@@ -1,7 +1,8 @@
 
 #ifndef GROUPACTIVITYMONITOR_H
 #define GROUPACTIVITYMONITOR_H
-#include "ActivityMonitor.h"
+
+
 #include "ActivityMonitor.h"
 
 #include <string>

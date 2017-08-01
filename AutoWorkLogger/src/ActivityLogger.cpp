@@ -44,8 +44,8 @@ void ActivityLogger::startLogging()
 				//ctime puts \n symbol, no need to put it explicitly
 				(*pLog) << ACTIVE_KEYWORD << " " << ctime(&lastActiveTime) << std::flush;
 			}
-			//wait for the las period
-			sleep(PERIOD_S);
+			//wait for the last period
+			System::pSystem->sleepSeconds(PERIOD_S);
 		}
 	}
 }
